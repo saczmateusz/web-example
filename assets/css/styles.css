@@ -1,0 +1,292 @@
+html,
+body {
+  font-family: Verdana, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+html {
+  background-color: #004b48;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-size: 36px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 20px;
+}
+h5 {
+  font-size: 18px;
+}
+h6 {
+  font-size: 16px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  font-weight: 400;
+  margin: 10px 0;
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid #eee;
+  margin: 20px 0;
+}
+
+a {
+  color: inherit;
+}
+
+.green {
+  color: #fff !important;
+  background-color: #009885 !important;
+}
+
+.green-dark {
+  color: #fff !important;
+  background-color: #004b48 !important;
+}
+
+.text-green {
+  color: #009885 !important;
+}
+
+header,
+footer {
+  padding: 1em;
+}
+
+footer > p {
+  margin: 10px 0px;
+}
+
+.margin {
+  margin: 16px !important;
+}
+
+.margin-top {
+  margin-top: 16px !important;
+}
+
+.margin-bottom {
+  margin-bottom: 16px !important;
+}
+
+.margin-left {
+  margin-left: 16px !important;
+}
+
+.margin-right {
+  margin-right: 16px !important;
+}
+
+.padding-small {
+  padding: 4px 8px !important;
+}
+
+.padding {
+  padding: 8px 16px !important;
+}
+
+.padding-large {
+  padding: 12px 24px !important;
+}
+
+.padding-16 {
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+}
+
+.tiny {
+  font-size: 10px !important;
+}
+
+.small {
+  font-size: 12px !important;
+}
+
+.medium {
+  font-size: 15px !important;
+}
+
+.large {
+  font-size: 18px !important;
+}
+
+.xlarge {
+  font-size: 24px !important;
+}
+
+.xxlarge {
+  font-size: 36px !important;
+}
+
+.xxxlarge {
+  font-size: 48px !important;
+}
+
+.animate-left {
+  position: relative;
+  animation: animateleft 0.4s;
+}
+@keyframes animateleft {
+  from {
+    left: -300px;
+    opacity: 0;
+  }
+  to {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+.animate-right {
+  position: relative;
+  animation: animateright 0.4s;
+}
+@keyframes animateright {
+  from {
+    right: -300px;
+    opacity: 0;
+  }
+  to {
+    right: 0;
+    opacity: 1;
+  }
+}
+
+.header-button > button {
+  margin: 10px 0px;
+}
+
+.left {
+  float: left !important;
+}
+
+.right {
+  float: right !important;
+}
+
+.left-align {
+  text-align: left !important;
+}
+
+.right-align {
+  text-align: right !important;
+}
+
+.justify {
+  text-align: justify !important;
+}
+
+.center {
+  text-align: center !important;
+}
+
+.button {
+  border: none;
+  display: inline-block;
+  padding: 8px 16px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.button:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.border-0 {
+  border: 0 !important;
+}
+
+.search {
+  display: flex;
+  margin: 0px 16px;
+}
+
+.searchbar {
+  width: 100%;
+}
+
+.center .searchbar {
+  display: inline-block;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  padding: 8px 16px;
+}
+
+.child {
+  width: 100%;
+  margin: 0px;
+}
+
+@media (min-width: 700px) {
+  .child {
+    width: 49%;
+    /* animation: widthanimation 0.4s; */
+  }
+  /* @keyframes widthanimation {
+    from {
+      width: 100%;
+    }
+    to {
+      width: 49%;
+    }
+  } */
+}
+
+@media (min-width: 1100px) {
+  .child {
+    width: 32%;
+    /* animation: widthanimation 0.4s; */
+  }
+  /* @keyframes widthanimation {
+    from {
+      width: 49%;
+    }
+    to {
+      width: 32%;
+    }
+  } */
+}
+
+.card {
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}

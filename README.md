@@ -1,0 +1,1 @@
+Weather web page that shows data from OpenWeatherMap API
