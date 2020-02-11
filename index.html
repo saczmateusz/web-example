@@ -7,8 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="/assets/css/styles.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" />
-  <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
-  <script src="/js/script.js"></script>
+  <!-- <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script> -->
 </head>
 
 <body onload="loadScript()">
@@ -17,68 +16,37 @@
     <div class="left">
       <h1 class="xlarge animate-left">TWOJA POGODA</h1>
     </div>
-    <div class="header-button right">
-      <button class="button medium green-dark animate-right" onclick="">
-        WYCZYŚĆ
-      </button>
+    <div class="header-form right animate-right">
+      <form class="searchbar" id="cityform">
+        <input class="form-input large border-0 padding" type="text" name="city" placeholder="Wyszukaj miasto"
+          value="" />
+        <button class="form-submit button medium green-dark" type="button" name="submit"
+          onclick="submitForm()">Dodaj</button class="button medium green-dark animate-right">
+      </form>
     </div>
   </header>
+  <!-- 
+  <div class="search margin-top margin-bottom card">
+    <button class="button medium green-dark" onclick="append()">
+      WYCZYŚĆ ale nie służy do czyszczenia
+    </button>
+  </div> -->
 
-  <div class="search margin-top card">
-    <form class="searchbar">
-      <input class="center searchbar large border-0 padding" type="text" name="city" placeholder="Wyszukaj miasto" />
-    </form>
+  <div class="margin-left">
+    <h2>Dodane miasta:</h2>
   </div>
 
-  <div class="content">
-    
-    <div class="child center">
-      <div class="card padding" style="min-height:460px">
-        <h3>Miasto 1</h3>
-        <br />
-        <i class="fa fa-diamond margin-bottom text-green" style="font-size:120px"></i>
-        <p>Temperatura</p>
-        <p>Zachmurzenie</p>
-        <p>Opady</p>
-        <p>Wiatr</p>
-      </div>
-    </div>
+  <div class="content" id="panels">
 
-    <div class="child center">
-      <div class="card padding" style="min-height:460px">
-        <h3>Miasto 2</h3>
-        <br />
-        <i class="fa fa-diamond margin-bottom text-green" style="font-size:120px"></i>
+    <!-- <div class="child center">
+      <div class="card padding" style="min-height:240px">
+        <h3>Rzeszów</h3>
         <p>Temperatura</p>
         <p>Zachmurzenie</p>
         <p>Opady</p>
         <p>Wiatr</p>
       </div>
-    </div>
-
-    <div class="child center">
-      <div class="card padding" style="min-height:460px">
-        <h3>Miasto 3</h3>
-        <br />
-        <i class="fa fa-diamond margin-bottom text-green" style="font-size:120px"></i>
-        <p>Temperatura</p>
-        <p>Zachmurzenie</p>
-        <p>Opady</p>
-        <p>Wiatr</p>
-      </div>
-    </div>
-
-    <div class="child center">
-      <div class="card padding" style="min-height:460px">
-        <h3>Miasto 4</h3>
-        <br />
-        <i class="fa fa-diamond margin-bottom text-green" style="font-size:120px"></i>
-        <p>Temperatura</p>
-        <p>Zachmurzenie</p>
-        <p>Opady</p>
-        <p>Wiatr</p>
-      </div>
-    </div>
+    </div> -->
 
   </div>
 
@@ -88,6 +56,7 @@
     </p>
   </footer>
   </div>
+  <script src="/js/script.js"></script>
 </body>
 
 </html>
