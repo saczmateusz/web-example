@@ -12,7 +12,7 @@ html {
 }
 * {
   box-sizing: border-box;
-  outline: 1px solid pink;
+  /* outline: 1px solid pink; */
 }
 body {
   background-color: white;
@@ -78,6 +78,7 @@ footer {
   background-color: inherit;
   text-align: center;
   cursor: pointer;
+  background-color: #004b48;
   white-space: nowrap;
 }
 .button:hover {
