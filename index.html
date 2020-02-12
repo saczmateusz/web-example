@@ -25,26 +25,21 @@
     </div>
   </header>
 
-  <!-- 
-  <div class="search margin-top margin-bottom card">
-    <button class="button medium green-dark" onclick="">
-      WYCZYŚĆ
-    </button>
-  </div> -->
-
   <div style="margin-left: 16px">
     <h1>Dodane miasta:</h1>
   </div>
 
   <div class="content" id="panels">
-    <div style="display: none;">
-      <div class="panel" id="template">
-        <h1><span class="city"></span></h1>
-        <p>Temperatura: <span class="temperature"></span> st. C</p>
-        <p>Wilgotność: <span class="humidity"></span>%</p>
-        <p>Wiatr: <span class="wind"></span> m/s</p>
-        <p><span class="description"></span></p>
-      </div>
+    
+  </div>
+  
+  <div style="display: none;">
+    <div class="panel" id="template">
+      <h1><span class="city"></span></h1>
+      <p>Temperatura: <span class="temperature"></span> st. C</p>
+      <p>Wilgotność: <span class="humidity"></span>%</p>
+      <p>Wiatr: <span class="wind"></span> m/s</p>
+      <p><span class="description"></span></p>
     </div>
   </div>
 
@@ -52,6 +47,11 @@
     <p>
       © 2020 Mateusz Sączawa. All rights reserved.
     </p>
+    <div class="clear">
+      <button class="button" style="background-color: #be4646;" onclick="clearLocalStorage()">
+        WYCZYŚĆ
+      </button>
+    </div>
   </footer>
 
   <script src="js/script.js"></script>

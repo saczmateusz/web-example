@@ -90,10 +90,18 @@ function addToLocalStorage(data) {
     description: data.weather[0].description,
   };
   console.log(city);
-  cities = [...cities, city];
-  localStorage.setItem(
-    'cities',
-    JSON.stringify(cities),
-  );
-  addNewCityToList(city);
+  if(cities.findIndex(element => element.name === city.name) === -1) {
+    cities = [...cities, city];
+    localStorage.setItem(
+      'cities',
+      JSON.stringify(cities),
+    );
+    addNewCityToList(city);
+  } else alert('duplicate/temporary alert')
+}
+
+function clearLocalStorage() {
+  localStorage.clear();
+  const panels = document.getElementById("panels");
+  panels.innerHTML = '';
 }
