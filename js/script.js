@@ -40,29 +40,14 @@ function submitForm() {
 }
 
 function append(data) {
-//   var templateID = document.getElementById("template");
-//   var template = templateID.cloneNode("true");
-  var newPanel = document.createElement('div')
-  // var insideDiv = document.createElement('div')
-  var h3 = document.createElement('h3')
-  var p1 = document.createElement('p')
-  var p2 = document.createElement('p')
-  var p3 = document.createElement('p')
-  var p4 = document.createElement('p')
-  newPanel.classList = 'panel';
-  // insideDiv.classList = 'card padding'
-  // insideDiv.style.cssText = 'min-height: 240px'
-  h3.innerHTML = `${data.name}`
-  p1.innerHTML = `Temperatura ${data.main.temp} st. C`
-  p2.innerHTML = `Wilgotność: ${data.main.humidity}%`
-  p3.innerHTML = `${data.weather[0].description}`
-  p4.innerHTML = `Wiatr: ${data.wind.speed} m/s`
-  newPanel.appendChild(h3)
-  newPanel.appendChild(p1)
-  newPanel.appendChild(p2)
-  newPanel.appendChild(p3)
-  newPanel.appendChild(p4)
-  // newPanel.appendChild(insideDiv)
+  var templateID = document.getElementById("template");
+  var template = templateID.cloneNode("true");
 
-  document.getElementById('panels').appendChild(newPanel)
+  template.querySelector(".city").innerHTML = data.name;
+  template.querySelector(".temperature").innerHTML = data.main.temp;
+  template.querySelector(".humidity").innerHTML = data.main.humidity;
+  template.querySelector(".wind").innerHTML = data.wind.speed;
+  template.querySelector(".description").innerHTML = data.weather[0].description;
+
+  document.getElementById('panels').appendChild(template)
 }
