@@ -64,10 +64,15 @@ function addNewCityToList(data) {
   template.id = data.id;
   template.querySelector('.cityid').id = data.id;
   template.querySelector('.city').innerHTML = data.name;
-  template.querySelector('.temperature').innerHTML = data.temperature;
+  template.querySelector('.temperature').innerHTML = data.temperature.toFixed(
+    1,
+  );
   template.querySelector('.humidity').innerHTML = data.humidity;
   template.querySelector('.wind').innerHTML = data.wind;
   template.querySelector('.description').innerHTML = data.description;
+  template.querySelector(
+    '.icon',
+  ).src = `http://openweathermap.org/img/wn/${data.icon}@2x.png`;
 
   document.getElementById('panels').appendChild(template);
   loading.style.display = 'none';
@@ -82,6 +87,7 @@ function addToLocalStorage(data) {
     humidity: data.main.humidity,
     wind: data.wind.speed,
     description: data.weather[0].description,
+    icon: data.weather[0].icon,
   };
   if (cities.length === 0) {
     document.querySelector('.message').innerHTML = 'Dodane miasta:';

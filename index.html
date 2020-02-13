@@ -4,11 +4,7 @@
     <title>Pogoda</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="shortcut icon"
-      type="image/png"
-      href="http://openweathermap.org/img/wn/02d.png"
-    />
+    <link rel="shortcut icon" type="image/png" href="assets/img/favicon.png" />
     <link rel="stylesheet" href="assets/css/styles.css" />
     <link
       rel="stylesheet"
@@ -45,11 +41,19 @@
     <div class="hidden-template">
       <div class="panel" id="template">
         <i class="fas fa-times cityid" onclick="deleteCity(this)"></i>
-        <h1 class="city"></h1>
-        <p>Temperatura: <span class="temperature"></span> st. C</p>
-        <p>Wilgotność: <span class="humidity"></span>%</p>
-        <p>Wiatr: <span class="wind"></span> m/s</p>
-        <p><span class="description"></span></p>
+        <div class="left-panel">
+          <div><img alt="Pogoda" src="" class="icon" /></div>
+          <div>
+            <p><span class="temperature"></span>°C</p>
+          </div>
+        </div>
+        <div class="right-panel">
+          <h1 class="city"></h1>
+
+          <p>Wilgotność: <span class="humidity"></span>%</p>
+          <p>Wiatr: <span class="wind"></span> m/s</p>
+          <p><span class="description"></span></p>
+        </div>
       </div>
     </div>
 
