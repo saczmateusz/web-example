@@ -4,10 +4,15 @@
     <title>Pogoda</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="shortcut icon"
+      type="image/png"
+      href="http://openweathermap.org/img/wn/02d.png"
+    />
     <link rel="stylesheet" href="assets/css/styles.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+      href="https://use.fontawesome.com/releases/v5.12.1/css/all.css"
     />
   </head>
 
@@ -25,7 +30,7 @@
             placeholder="Wyszukaj miasto"
           />
           <button class="form-submit button" type="submit">
-            Dodaj
+            DODAJ
           </button>
         </form>
       </div>
@@ -39,6 +44,7 @@
 
     <div class="hidden-template">
       <div class="panel" id="template">
+        <i class="fas fa-times cityid" onclick="deleteCity(this)"></i>
         <h1 class="city"></h1>
         <p>Temperatura: <span class="temperature"></span> st. C</p>
         <p>Wilgotność: <span class="humidity"></span>%</p>

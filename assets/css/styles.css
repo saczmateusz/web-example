@@ -110,7 +110,6 @@ footer .button {
 .form-submit {
   width: 25%;
   margin: auto;
-  font-size: 18px;
   height: 100%;
   position: absolute;
   background-color: #004b48;
@@ -129,6 +128,7 @@ footer .button {
   text-align: center;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
   padding: 8px 16px;
+  position: relative;
 }
 @media (min-width: 700px) {
   .panel {
@@ -160,4 +160,15 @@ footer .button {
   width: 100px;
   height: 100px;
   margin: auto;
+}
+i {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  color: #60b8ad;
+  font-size: 24px;
+  transition: 0.4s;
+}
+i:hover {
+  transform: rotate(180deg);
 }

@@ -59,9 +59,10 @@ form.addEventListener('submit', event => {
 
 // Generate panel with weather data and add it to html body
 function addNewCityToList(data) {
-  // var templateID = document.getElementById('template');
   var template = document.getElementById('template').cloneNode('true');
 
+  template.id = data.id;
+  template.querySelector('.cityid').id = data.id;
   template.querySelector('.city').innerHTML = data.name;
   template.querySelector('.temperature').innerHTML = data.temperature;
   template.querySelector('.humidity').innerHTML = data.humidity;
@@ -73,7 +74,9 @@ function addNewCityToList(data) {
 }
 
 function addToLocalStorage(data) {
+  console.log(data);
   var city = {
+    id: data.id,
     name: data.name,
     temperature: data.main.temp,
     humidity: data.main.humidity,
@@ -99,4 +102,15 @@ function clearLocalStorage() {
   const panels = document.getElementById('panels');
   panels.innerHTML = '';
   document.querySelector('.message').innerHTML = 'Dodaj miasta do swojej listy';
+}
+
+function deleteCity(res) {
+  const id = parseInt(res.id, 10);
+  document.getElementById(id).remove();
+  cities = cities.filter(city => city.id !== id);
+  localStorage.setItem('cities', JSON.stringify(cities));
+  if (cities.length === 0) {
+    document.querySelector('.message').innerHTML =
+      'Dodaj miasta do swojej listy';
+  }
 }
