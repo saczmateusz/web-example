@@ -1,24 +1,14 @@
 const proxy = 'https://cors-anywhere.herokuapp.com/';
 const GEO_API_URL = `${proxy}https://darksky.net/geo?q=`;
-let WEATHER_API_URL = `${proxy}api.openweathermap.org/data/2.5/weather?units=metric&lang=pl&APPID=`;
+let WEATHER_API_URL = `${proxy}api.openweathermap.org/data/2.5/weather?units=metric&lang=pl&APPID=5411260f763f2122d29f0fcc8397bbf1`;
 
-let lat = '';
-let lon = '';
 let cities = [];
 const form = document.querySelector('form');
+const loading = document.querySelector('.loading');
 
 window.onload = initialize;
 
 function initialize() {
-  var xobj = new XMLHttpRequest();
-  xobj.open('GET', './js/API_KEY.json', true);
-  xobj.onreadystatechange = function() {
-    if (xobj.readyState == 4 && xobj.status == '200') {
-      var API_KEY = JSON.parse(xobj.responseText);
-      WEATHER_API_URL = `${WEATHER_API_URL}${API_KEY['key']}`;
-    }
-  };
-  xobj.send(null);
   loadLocalStorage();
 }
 
@@ -57,10 +47,9 @@ form.addEventListener('submit', event => {
 
   // If given city is not an empty string, get data for the closest station
   if (city !== '') {
+    loading.style.display = 'flex';
     getCoordinates(city).then(response => {
-      lat = response.latitude;
-      lon = response.longitude;
-      getWeather(lat, lon).then(response => addToLocalStorage(response));
+      getWeather(response.latitude, response.longitude).then(addToLocalStorage);
     });
   } else alert('Formularz nie może być pusty');
 
@@ -70,8 +59,8 @@ form.addEventListener('submit', event => {
 
 // Generate panel with weather data and add it to html body
 function addNewCityToList(data) {
-  var templateID = document.getElementById('template');
-  var template = templateID.cloneNode('true');
+  // var templateID = document.getElementById('template');
+  var template = document.getElementById('template').cloneNode('true');
 
   template.querySelector('.city').innerHTML = data.name;
   template.querySelector('.temperature').innerHTML = data.temperature;
@@ -80,7 +69,7 @@ function addNewCityToList(data) {
   template.querySelector('.description').innerHTML = data.description;
 
   document.getElementById('panels').appendChild(template);
-  // addToLocalStorage(data);
+  loading.style.display = 'none';
 }
 
 function addToLocalStorage(data) {
@@ -98,7 +87,10 @@ function addToLocalStorage(data) {
     cities = [...cities, city];
     localStorage.setItem('cities', JSON.stringify(cities));
     addNewCityToList(city);
-  } else alert('To miasto znajduje się już na Twojej liście');
+  } else {
+    loading.style.display = 'none';
+    alert('To miasto znajduje się już na Twojej liście');
+  }
 }
 
 function clearLocalStorage() {

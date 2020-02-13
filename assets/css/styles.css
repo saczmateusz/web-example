@@ -83,7 +83,6 @@ footer {
   color: inherit;
   text-align: center;
   cursor: pointer;
-  background-color: #004b48;
   white-space: nowrap;
 }
 .button:hover {
@@ -114,6 +113,7 @@ footer .button {
   font-size: 18px;
   height: 100%;
   position: absolute;
+  background-color: #004b48;
 }
 .content {
   display: flex;
@@ -147,4 +147,17 @@ footer .button {
 }
 .hidden-template {
   display: none;
+}
+.loading {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background-color: none;
+  pointer-events: none;
+  display: none;
+}
+.loading img {
+  width: 100px;
+  height: 100px;
+  margin: auto;
 }
