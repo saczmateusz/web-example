@@ -1,61 +1,64 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>Pogoda</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css"
+    />
+  </head>
 
-<head>
-  <title>Witam pozdrawiam :tescik:</title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="assets/css/styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" />
-</head>
+  <body>
+    <header>
+      <div class="header-title">
+        <h1 class="animate-left">TWOJA POGODA</h1>
+      </div>
+      <div class="header-form animate-right">
+        <form class="searchbar" id="cityform">
+          <input
+            class="form-input"
+            type="text"
+            id="city"
+            placeholder="Wyszukaj miasto"
+            value=""
+          />
+          <button class="form-submit button" type="submit" id="submit">
+            Dodaj
+          </button>
+        </form>
+      </div>
+    </header>
 
-<body >
-  
-  <header>
-    <div style="float: left;">
-      <h1 class="animate-left">TWOJA POGODA</h1>
+    <div class="message-div">
+      <h1 class="message">Dodaj miasta do swojej listy</h1>
     </div>
-    <div class="header-form animate-right">
-      <form class="searchbar" id="cityform">
-        <input class="form-input" type="text" id="city" placeholder="Wyszukaj miasto"
-          value="" />
-        <button class="form-submit button green-dark" type="button" id="submit"
-          onclick="submitForm()">Dodaj</button>
-      </form>
+
+    <div class="content" id="panels"></div>
+
+    <div class="hidden-template">
+      <div class="panel" id="template">
+        <h1 class="city"></h1>
+        <p>Temperatura: <span class="temperature"></span> st. C</p>
+        <p>Wilgotność: <span class="humidity"></span>%</p>
+        <p>Wiatr: <span class="wind"></span> m/s</p>
+        <p><span class="description"></span></p>
+      </div>
     </div>
-  </header>
 
-  <div style="margin-left: 16px">
-    <h1 class="message">Dodaj miasta do swojej listy</h1>
-  </div>
+    <footer>
+      <p>
+        © 2020 Mateusz Sączawa. All rights reserved.
+      </p>
+      <div class="clear">
+        <button class="button" onclick="clearLocalStorage()">
+          WYCZYŚĆ
+        </button>
+      </div>
+    </footer>
 
-  <div class="content" id="panels">
-    
-  </div>
-
-  <div style="display: none;">
-    <div class="panel" id="template">
-      <h1><span class="city"></span></h1>
-      <p>Temperatura: <span class="temperature"></span> st. C</p>
-      <p>Wilgotność: <span class="humidity"></span>%</p>
-      <p>Wiatr: <span class="wind"></span> m/s</p>
-      <p><span class="description"></span></p>
-    </div>
-  </div>
-
-  <footer>
-    <p>
-      © 2020 Mateusz Sączawa. All rights reserved.
-    </p>
-    <div class="clear">
-      <button class="button" style="background-color: #be4646;" onclick="clearLocalStorage()">
-        WYCZYŚĆ
-      </button>
-    </div>
-  </footer>
-
-  <script src="js/script.js"></script>
-
-</body>
-
+    <script src="js/script.js"></script>
+  </body>
 </html>

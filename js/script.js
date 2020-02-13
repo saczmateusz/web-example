@@ -2,14 +2,14 @@ const proxy = 'https://cors-anywhere.herokuapp.com/';
 const GEO_API_URL = `${proxy}https://darksky.net/geo?q=`;
 let WEATHER_API_URL = `${proxy}api.openweathermap.org/data/2.5/weather?units=metric&lang=pl&APPID=`;
 
-var form = document.forms[0];
 let lat = '';
 let lon = '';
 let cities = [];
+const form = document.querySelector('form');
 
-window.onload = loadScript;
+window.onload = initialize;
 
-function loadScript() {
+function initialize() {
   var xobj = new XMLHttpRequest();
   xobj.open('GET', './js/API_KEY.json', true);
   xobj.onreadystatechange = function() {
@@ -48,11 +48,14 @@ function getWeather(lat, lng) {
   );
 }
 
-function submitForm() {
-  // Retrieve form input
+form.addEventListener('submit', event => {
+  // Prevent default submitting with page reload
+  event.preventDefault();
+
+  // Retrieve form input data
   var city = form.elements['city'].value;
 
-  // If city is not an empty string then find its coordinates
+  // If given city is not an empty string, get data for the closest station
   if (city !== '') {
     getCoordinates(city).then(response => {
       lat = response.latitude;
@@ -60,9 +63,10 @@ function submitForm() {
       getWeather(lat, lon).then(response => addToLocalStorage(response));
     });
   } else alert('Formularz nie może być pusty');
+
   // Clear form input
   form.elements['city'].value = '';
-}
+});
 
 // Generate panel with weather data and add it to html body
 function addNewCityToList(data) {
@@ -99,6 +103,7 @@ function addToLocalStorage(data) {
 
 function clearLocalStorage() {
   localStorage.clear();
+  cities = [];
   const panels = document.getElementById('panels');
   panels.innerHTML = '';
   document.querySelector('.message').innerHTML = 'Dodaj miasta do swojej listy';

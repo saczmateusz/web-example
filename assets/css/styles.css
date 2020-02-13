@@ -39,6 +39,12 @@ footer {
   background-color: #004b48;
   position: relative;
 }
+.header-title {
+  float: left;
+}
+.message-div {
+  margin-left: 16px;
+}
 .animate-left {
   position: relative;
   animation: animateleft 0.4s;
@@ -70,12 +76,11 @@ footer {
 .button {
   border: none;
   display: inline-block;
-  padding: 8px 16px;
+  padding: 5px 16px;
   vertical-align: middle;
   overflow: hidden;
   text-decoration: none;
   color: inherit;
-  background-color: inherit;
   text-align: center;
   cursor: pointer;
   background-color: #004b48;
@@ -83,6 +88,10 @@ footer {
 }
 .button:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+footer .button {
+  background-color: #be4646;
+  height: 31px;
 }
 .header-form {
   position: relative;
@@ -97,14 +106,13 @@ footer {
   display: inline-block;
   font-size: 18px;
   border: none;
-  padding: 8px 16px;
+  padding: 5px 16px;
 }
 .form-submit {
   width: 25%;
   margin: auto;
   font-size: 18px;
   height: 100%;
-  display: inline-block;
   position: absolute;
 }
 .content {
@@ -136,4 +144,7 @@ footer {
   position: absolute;
   top: -50px;
   right: 16px;
+}
+.hidden-template {
+  display: none;
 }
