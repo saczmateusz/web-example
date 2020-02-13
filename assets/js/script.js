@@ -1,6 +1,7 @@
 const proxy = 'https://cors-anywhere.herokuapp.com/';
 const GEO_API_URL = `${proxy}https://darksky.net/geo?q=`;
-let WEATHER_API_URL = `${proxy}api.openweathermap.org/data/2.5/weather?units=metric&lang=pl&APPID=5411260f763f2122d29f0fcc8397bbf1`;
+const WEATHER_API_URL = `${proxy}api.openweathermap.org/data/2.5/weather?units=metric&lang=pl&APPID=5411260f763f2122d29f0fcc8397bbf1`;
+const WEATHER_GROUP_API_URL = `${proxy}api.openweathermap.org/data/2.5/group?units=metric&lang=pl&APPID=5411260f763f2122d29f0fcc8397bbf1`;
 
 let cities = [];
 const form = document.querySelector('form');
@@ -15,15 +16,35 @@ function initialize() {
 function loadLocalStorage() {
   if (localStorage.getItem('cities')) {
     cities = JSON.parse(localStorage.getItem('cities'));
-    loadWeatherForLocalStorage();
+    const idList = cities
+      .reduce((id, city) => (id = `${id},${city.id}`), '')
+      .slice(1);
+    loadWeatherForLocalStorage(idList)
+      .then(updateCitiesData)
+      .then(response =>
+        response.map(city => {
+          addNewCityToList(city);
+        }),
+      );
+
     document.querySelector('.message').innerHTML = 'Dodane miasta:';
   }
 }
 
-function loadWeatherForLocalStorage() {
-  cities.map(city => {
-    addNewCityToList(city);
+function loadWeatherForLocalStorage(idList) {
+  return getWeatherGroupOfIds(idList);
+}
+
+function updateCitiesData(data) {
+  data.list.map((element, index) => {
+    cities[index].temperature = element.main.temp;
+    cities[index].humidity = element.main.humidity;
+    cities[index].wind = element.wind.speed;
+    cities[index].description = element.weather[0].description;
+    cities[index].icon = element.weather[0].icon;
   });
+  localStorage.setItem('cities', JSON.stringify(cities));
+  return cities;
 }
 
 // Get coordinates for argument city
@@ -34,6 +55,13 @@ function getCoordinates(location) {
 // Get current weather data for argument coordinates
 function getWeather(lat, lng) {
   return fetch(`${WEATHER_API_URL}&lat=${lat}&lon=${lng}`).then(response =>
+    response.json(),
+  );
+}
+
+// Update weather for saved cities after page reload
+function getWeatherGroupOfIds(id) {
+  return fetch(`${WEATHER_GROUP_API_URL}&id=${id}`).then(response =>
     response.json(),
   );
 }
@@ -79,7 +107,6 @@ function addNewCityToList(data) {
 }
 
 function addToLocalStorage(data) {
-  console.log(data);
   var city = {
     id: data.id,
     name: data.name,
