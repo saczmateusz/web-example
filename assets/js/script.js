@@ -138,12 +138,12 @@ function clearLocalStorage() {
 }
 
 function deleteCity(res) {
-  const id = parseInt(res.id, 10);
-  document.getElementById(id).remove();
-  cities = cities.filter(city => city.id !== id);
+  document.getElementById(res.id).remove();
+  cities = cities.filter(city => city.id != res.id);
   localStorage.setItem('cities', JSON.stringify(cities));
   if (cities.length === 0) {
     document.querySelector('.message').innerHTML =
       'Dodaj miasta do swojej listy';
+    localStorage.clear();
   }
 }
